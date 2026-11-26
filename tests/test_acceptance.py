@@ -62,3 +62,10 @@ def test_pending_weather_completed_by_city(graph):
     chat(graph, "t6", "Check the weather and hotel H101")
     r = chat(graph, "t6", "It is Mumbai")
     assert "Mumbai" in r
+
+
+def test_no_stale_results_when_asking_for_missing_arg(graph):
+    chat(graph, "t7", "What is the weather in Hyderabad?")
+    r = chat(graph, "t7", "Check my flight status")
+    assert "weather" not in r.lower()          # old answer must not be repeated
+    assert "flight number" in r.lower()

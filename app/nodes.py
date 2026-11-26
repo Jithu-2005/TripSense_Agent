@@ -95,7 +95,7 @@ def plan(state: AgentState) -> dict:
     if not parsed.intents:
         unsupported = True
 
-    return {"ready_calls": ready, "needs_input": needs, "unsupported": unsupported}
+    return {"ready_calls": ready, "needs_input": needs, "unsupported": unsupported, "results": []}
 
 
 def execute(state: AgentState) -> dict:
